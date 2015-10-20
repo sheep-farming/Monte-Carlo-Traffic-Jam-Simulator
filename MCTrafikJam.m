@@ -1,4 +1,4 @@
-maxSpeed=8;
+maxSpeed=10;
 initSpeed=2;
 car=[];
 speed=[];
@@ -14,19 +14,20 @@ for(i=1:800)
     
     for(j=800:-1:1)
         if car(j)==1
-            if speed(j)<maxSpeed+randsample(-2:2,1)
-                
-                %Slow Down
-                    slowDownDice=randsample(1:10,1);
-                    if (slowDownDice<4)
+            
+            slowDownDice=randsample(1:10,1);
+            if (slowDownDice<4)
                         speed(j)=initSpeed;
-                    end
+            end
+            vibMaxSpeed=maxSpeed+randsample(0:3,1);
+            if speed(j)<vibMaxSpeed
                 if j<800-2    
                     if (car(j+1)==0&&car(j+2)==0)
                         speed(j)=speed(j)+1;
                     end
                 end
             end
+            
                 newPos=j+speed(j);
                 if(newPos<=800)
                     for k=j+1:newPos
@@ -56,7 +57,7 @@ for(i=1:800)
     
     
     newCarDice=randsample(1:10,1);
-    if (newCarDice<7)&&(car(1)==0)
+    if (newCarDice<8)&&(car(1)==0)
         car(1)=1;
         speed(1)=initSpeed;
     end
@@ -66,6 +67,6 @@ end
 a=imshow([1-carFig])
 pause
 for(i=1:800)
-    imshow(carFig(i,:));
+    imshow([1-carFig(i,:)]);
     pause(0.005)
 end
