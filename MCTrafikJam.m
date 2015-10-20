@@ -1,5 +1,5 @@
-maxSpeed=10;
-initSpeed=2;
+maxSpeed=40;
+initSpeed=1;
 car=[];
 speed=[];
 carFig=[];
@@ -16,7 +16,7 @@ for(i=1:800)
         if car(j)==1
             
             slowDownDice=randsample(1:10,1);
-            if (slowDownDice<4)
+            if (slowDownDice<3)
                         speed(j)=initSpeed;
             end
             vibMaxSpeed=maxSpeed+randsample(0:3,1);
@@ -57,7 +57,7 @@ for(i=1:800)
     
     
     newCarDice=randsample(1:10,1);
-    if (newCarDice<8)&&(car(1)==0)
+    if (newCarDice<9)&&(car(1)==0)
         car(1)=1;
         speed(1)=initSpeed;
     end
